@@ -1,0 +1,56 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+build/
+
+# compiled binaries (pkg output)
+*.exe
+envlock-macos-*
+envlock-linux-*
+envlock-win-*
+
+# npm
+*.tgz
+.npmrc
+
+# env files — never commit these
+.env
+.env.local
+.env.dev
+.env.development
+.env.staging
+.env.production
+.env.prod
+.env.test
+.env.*.local
+
+# envlock private keys — never commit these
+.envlock/keys/*.key
+~/.envlock/
+
+# logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# editors
+.vscode/
+.idea/
+*.swp
+*.swo
+.vim/
+
+# test artifacts
+test/tmp/
+coverage/
+.nyc_output/
+
+# misc
+.cache/
+tmp/

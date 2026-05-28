@@ -1,0 +1,83 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+
+:root {
+  /* backgrounds */
+  --bg:           #07080D;
+  --sidebar-bg:   #0B0C13;
+  --card:         #0F111A;
+  --card-hover:   #141620;
+  --surface:      #161825;
+  --surface-hover:#1B1E2D;
+  /* borders */
+  --border:       #1C1F2E;
+  --border-light: #252840;
+  /* text */
+  --text:         #DCE4F5;
+  --text-dim:     #7E8AA8;
+  --text-muted:   #424C66;
+  /* brand */
+  --accent:       #7B61FF;
+  --accent-soft:  rgba(123, 97, 255, 0.12);
+  --accent-glow:  rgba(123, 97, 255, 0.30);
+  /* access levels */
+  --manage:       #A78BFA;
+  --manage-bg:    rgba(167, 139, 250, 0.10);
+  --write:        #FCD34D;
+  --write-bg:     rgba(252, 211, 77, 0.10);
+  --read:         #34D399;
+  --read-bg:      rgba(52, 211, 153, 0.10);
+  /* status */
+  --red:          #F87171;
+  --red-bg:       rgba(248, 113, 113, 0.10);
+  --green:        #4ADE80;
+  /* layout */
+  --sidebar-w:    240px;
+  --radius:       8px;
+  --radius-lg:    12px;
+  --radius-xl:    16px;
+  /* animation */
+  --ease:         cubic-bezier(0.16, 1, 0.3, 1);
+  --t:            160ms;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  color: inherit;
+}
+
+input, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px }
+::-webkit-scrollbar-track { background: transparent }
+::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 99px }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted) }
+
+/* focus-visible ring */
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

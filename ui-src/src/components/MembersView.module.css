@@ -1,0 +1,353 @@
+.page {
+  padding: 32px 36px 60px;
+  max-width: 900px;
+}
+
+.pageHead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.pageTitle {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text);
+}
+
+.countBadge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: 99px;
+  background: var(--surface);
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+}
+
+.pageSub {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 28px;
+}
+
+/* ── grid ───────────────────────────────────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 12px;
+}
+
+/* ── member card ────────────────────────────────── */
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  transition: border-color var(--t), background var(--t);
+}
+.card:hover {
+  border-color: var(--border-light);
+  background: var(--card-hover);
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 14px;
+}
+
+.cardInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.cardName {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.cardFp {
+  font-size: 10px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  color: var(--text-muted);
+}
+
+.youTag {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 1px 6px;
+  border-radius: 99px;
+}
+
+.cardActions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+/* ── icon buttons ───────────────────────────────── */
+
+.iconBtn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  color: var(--text-muted);
+  transition: background var(--t), color var(--t);
+}
+.iconBtn:hover:not(:disabled) {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+.iconBtn:disabled { opacity: 0.4; cursor: not-allowed }
+
+.iconBtnDanger:hover:not(:disabled) {
+  background: var(--red-bg) !important;
+  color: var(--red) !important;
+}
+
+/* ── env grid ───────────────────────────────────── */
+
+.envGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.envChip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: transparent;
+  transition: background var(--t), border-color var(--t);
+}
+
+.envChip:hover { border-color: var(--border-light) }
+
+.envChipActive {
+  background: var(--surface);
+}
+
+.envChipName {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-dim);
+  flex: 1;
+  min-width: 0;
+}
+
+.envChipNone {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.revokeChipBtn {
+  opacity: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: var(--text-muted);
+  transition: opacity var(--t), background var(--t), color var(--t);
+}
+.envChip:hover .revokeChipBtn { opacity: 1 }
+.revokeChipBtn:hover:not(:disabled) {
+  background: var(--red-bg);
+  color: var(--red);
+}
+.revokeChipBtn:disabled { cursor: not-allowed }
+
+/* ── modal text ─────────────────────────────────── */
+
+.modalText {
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.modalSub {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* ── grant chip button ──────────────────────────── */
+
+.grantChipBtn {
+  opacity: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: var(--text-muted);
+  transition: opacity var(--t), background var(--t), color var(--t);
+}
+.envChip:hover .grantChipBtn { opacity: 1 }
+.grantChipBtn:hover:not(:disabled) {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.grantChipBtn:disabled { cursor: not-allowed }
+
+/* ── pending / no-access tag ────────────────────── */
+
+.pendingTag {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1px 6px;
+  border-radius: 99px;
+}
+
+/* ── grant modal form ───────────────────────────── */
+
+.formGroup {
+  margin-bottom: 16px;
+}
+
+.label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+
+.accessPicker {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.accessOption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--t), background var(--t);
+  width: 100%;
+}
+.accessOption:hover {
+  border-color: var(--border-light);
+  background: var(--surface);
+}
+.accessOptionActive {
+  border-color: var(--accent) !important;
+  background: var(--accent-soft) !important;
+}
+
+.accessDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.accessDot[data-level="read"]   { background: var(--read) }
+.accessDot[data-level="write"]  { background: var(--write) }
+.accessDot[data-level="manage"] { background: var(--manage) }
+
+.accessLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  min-width: 52px;
+}
+
+.accessDesc {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* ── sync checkbox row ──────────────────────────── */
+
+.checkRow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  color: var(--text-dim);
+  cursor: pointer;
+  margin-bottom: 4px;
+  user-select: none;
+}
+
+.checkbox {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.checkHint {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.formError {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--red);
+  padding: 8px 12px;
+  background: var(--red-bg);
+  border-radius: 6px;
+}
+
+/* ── invite hint ────────────────────────────────── */
+
+.inviteHint {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 20px;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: var(--card);
+  border: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.inviteIcon {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.inviteCode {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 1px 5px;
+  border-radius: 4px;
+}

@@ -1,0 +1,469 @@
+.page {
+  padding: 32px 36px 60px;
+  max-width: 860px;
+}
+
+/* ── page header ────────────────────────────────── */
+
+.pageHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.pageHeadLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pageTitle {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text);
+}
+
+/* ── add button ─────────────────────────────────── */
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  transition: opacity var(--t);
+}
+.addBtn:hover { opacity: 0.88 }
+
+/* ── stats ──────────────────────────────────────── */
+
+.statsRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.stat {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.statNum {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.5px;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.statDivider {
+  width: 1px;
+  height: 16px;
+  background: var(--border);
+}
+
+/* ── sections ───────────────────────────────────── */
+
+.section {
+  margin-bottom: 40px;
+}
+
+.sectionTitle {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+/* ── variable list ──────────────────────────────── */
+
+.varList {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--card);
+}
+
+.varRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--border);
+  transition: background var(--t);
+  flex-wrap: wrap;
+}
+
+.varRow:last-child { border-bottom: none }
+.varRow:hover { background: var(--card-hover) }
+
+.varMain {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 180px;
+  flex: 1;
+}
+
+.keyIcon {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.keyName {
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.2px;
+}
+
+/* ── reveal area ────────────────────────────────── */
+
+.revealShown {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 2;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 5px 10px;
+}
+
+.revealValue {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 12px;
+  color: var(--read);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.revealAction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 5px;
+  border-radius: 4px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: color var(--t), background var(--t);
+}
+.revealAction:hover { background: var(--surface-hover); color: var(--text-dim) }
+.revealActionCopied { color: var(--read) !important }
+
+.revealClose {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  padding: 3px 5px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  transition: color var(--t), background var(--t);
+}
+.revealClose:hover { background: var(--surface-hover); color: var(--text-dim) }
+
+.revealError {
+  font-size: 12px;
+  color: var(--red);
+  flex: 1;
+}
+
+/* ── edit row ───────────────────────────────────── */
+
+.editRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 2;
+}
+
+.editInput {
+  flex: 1;
+  padding: 6px 10px;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 13px;
+  transition: border-color var(--t);
+}
+.editInput:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.editSave {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  transition: background var(--t);
+}
+.editSave:hover:not(:disabled) { background: var(--accent-glow) }
+.editSave:disabled { opacity: 0.5 }
+
+.editCancel {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  color: var(--text-muted);
+  transition: background var(--t), color var(--t);
+}
+.editCancel:hover { background: var(--surface-hover); color: var(--text-dim) }
+
+/* ── var meta ───────────────────────────────────── */
+
+.varMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.authorCell {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.authorName {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.timeCell {
+  font-size: 11px;
+  color: var(--text-muted);
+  min-width: 60px;
+  text-align: right;
+}
+
+/* ── action buttons ─────────────────────────────── */
+
+.varActions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.actionBtn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  color: var(--text-muted);
+  transition: background var(--t), color var(--t);
+}
+
+.actionBtn:hover:not(:disabled) {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.actionBtn:disabled { opacity: 0.4; cursor: not-allowed }
+
+.actionBtnActive {
+  background: var(--accent-soft) !important;
+  color: var(--accent) !important;
+}
+
+.actionBtnDanger:hover:not(:disabled) {
+  background: var(--red-bg) !important;
+  color: var(--red) !important;
+}
+
+@keyframes spin { to { transform: rotate(360deg) } }
+.spin { animation: spin 0.7s linear infinite }
+
+/* ── form (inside modal) ────────────────────────── */
+
+.formGroup {
+  margin-bottom: 14px;
+}
+
+.label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+}
+
+.input {
+  width: 100%;
+  padding: 9px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 13px;
+  transition: border-color var(--t);
+}
+.input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.input::placeholder { color: var(--text-muted) }
+
+/* value input with eye toggle */
+.inputWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputWithToggle {
+  width: 100%;
+  padding: 9px 38px 9px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 13px;
+  transition: border-color var(--t);
+}
+.inputWithToggle:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+  outline: none;
+}
+.inputWithToggle::placeholder { color: var(--text-muted) }
+
+.eyeToggle {
+  position: absolute;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  padding: 4px;
+  border-radius: 4px;
+  transition: color var(--t);
+}
+.eyeToggle:hover { color: var(--text-dim) }
+
+.formError {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--red);
+  padding: 8px 12px;
+  background: var(--red-bg);
+  border-radius: 6px;
+}
+
+/* ── confirm text (inside delete modal) ─────────── */
+
+.confirmText {
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.confirmKey {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 13px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.confirmSub {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* ── member list ────────────────────────────────── */
+
+.memberList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.memberRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: background var(--t), border-color var(--t);
+}
+.memberRow:hover {
+  background: var(--card-hover);
+  border-color: var(--border-light);
+}
+
+.memberInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.memberName {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.memberFp {
+  font-size: 10px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  color: var(--text-muted);
+}
+
+.youTag {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 1px 6px;
+  border-radius: 99px;
+  letter-spacing: 0.3px;
+}
+
+/* ── coverage ───────────────────────────────────── */
+
+.coverageOk      { font-size: 12px; color: var(--green) }
+.coveragePartial { font-size: 12px; color: var(--write) }
+.coverageMissing { font-size: 12px; color: var(--red) }
+.coverageNa      { font-size: 12px; color: var(--text-muted) }

@@ -1,0 +1,175 @@
+.shell {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main {
+  flex: 1;
+  overflow-y: auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── loading ──────────────────────────────────── */
+
+.loadingScreen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+/* Soft radial purple glow behind the icon */
+.loadingGlow {
+  position: absolute;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(123, 97, 255, 0.13) 0%, transparent 68%);
+  animation: glowPulse 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes glowPulse {
+  0%, 100% { transform: scale(1);    opacity: 1 }
+  50%       { transform: scale(1.12); opacity: 0.65 }
+}
+
+/* Wrapper that holds both the ring and the icon, centred */
+.spinnerWrap {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+/* Conic-gradient spinning ring */
+.spinnerRing {
+  position: absolute;
+  inset: -6px;           /* 6 px gap between ring and icon edge  */
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    rgba(123, 97, 255, 0.25) 30%,
+    #7B61FF 60%,
+    #9070FF 80%,
+    transparent 100%
+  );
+  animation: spinRing 1.1s linear infinite;
+  /* mask the ring to a thin stroke */
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
+  mask:         radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
+}
+
+@keyframes spinRing {
+  to { transform: rotate(360deg) }
+}
+
+/* The icon itself */
+.loadingIcon {
+  width: 72px;
+  height: 72px;
+  border-radius: 17px;
+  position: relative;
+  z-index: 1;
+  animation: iconGlow 3s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes iconGlow {
+  0%, 100% { filter: drop-shadow(0 0 12px rgba(123, 97, 255, 0.45)) }
+  50%       { filter: drop-shadow(0 0 28px rgba(123, 97, 255, 0.75)) }
+}
+
+/* "envlock" wordmark */
+.loadingWordmark {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text);
+  animation: fadeUp 0.5s var(--ease) both;
+  animation-delay: 80ms;
+}
+
+/* status line */
+.loadingStatus {
+  margin-top: 7px;
+  font-size: 13px;
+  color: var(--text-muted);
+  animation: fadeUp 0.5s var(--ease) both;
+  animation-delay: 160ms;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(7px) }
+  to   { opacity: 1; transform: translateY(0) }
+}
+
+/* Indeterminate progress bar — pinned to the bottom */
+.progressBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  width: 45%;
+  background: linear-gradient(90deg, transparent, #7B61FF, #A78BFA, transparent);
+  animation: progress 1.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes progress {
+  0%   { transform: translateX(-120%) }
+  100% { transform: translateX(360%) }
+}
+
+/* ── error ────────────────────────────────────── */
+
+.errorScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 12px;
+  padding: 24px;
+  text-align: center;
+}
+
+.errorTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--red);
+}
+
+.errorMessage {
+  color: var(--text-dim);
+  font-size: 13px;
+  max-width: 400px;
+}
+
+.retryBtn {
+  margin-top: 8px;
+  padding: 8px 20px;
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 500;
+  transition: background var(--t) var(--ease);
+}
+.retryBtn:hover { background: var(--accent-glow) }
