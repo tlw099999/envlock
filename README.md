@@ -130,6 +130,23 @@ envlock decrypt --env dev
 # → .env.prod and .env.dev appear on her machine
 ```
 
+### Migrating an existing project
+
+Already have `.env` files? Import them in one shot:
+
+```bash
+envlock import --env prod
+# → detects .env.prod automatically
+# → shows a checklist of all vars (new ones pre-checked)
+# → you choose exactly what to import or overwrite
+# → encrypts everything for all members
+
+# or point to any file explicitly
+envlock import --env dev --file .env.example
+```
+
+`envlock setup` also prompts to import automatically when it detects existing `.env` files.
+
 ### Opening the dashboard
 
 ```bash
@@ -167,6 +184,7 @@ envlock run --env dev -- pytest tests/
 
 | Command | Description |
 |---|---|
+| `envlock import --env <env>` | Import vars from an existing `.env` file |
 | `envlock add KEY=VALUE --env <env>` | Add a new secret |
 | `envlock update KEY=VALUE --env <env>` | Update an existing secret |
 | `envlock remove KEY --env <env>` | Remove a secret |

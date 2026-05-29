@@ -8,6 +8,7 @@ import { writeToken } from '../config/lockfile.js'
 import { requireRepoRoot } from '../utils/repo.js'
 import { promptInstallHooks } from './installHooks.js'
 import { promptInstallCi }    from './ci.js'
+import { promptImport }       from './import.js'
 
 // ── hook scripts written to .envlock/hooks/ (committed to repo) ───────────────
 // exported so removeEnv.js can refresh them in existing repos
@@ -190,6 +191,9 @@ export async function cmdSetup() {
     spinner.fail('setup failed')
     throw err
   }
+
+  // prompt to import existing .env files
+  await promptImport(repoRoot, envs, identity)
 
   // prompt to install hooks (after spinner is done)
   await promptInstallHooks(repoRoot)

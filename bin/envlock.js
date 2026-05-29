@@ -99,6 +99,16 @@ program
 // ─── variables ────────────────────────────────────────────────────────
 
 program
+  .command('import')
+  .description('import vars from an existing .env file into an environment')
+  .requiredOption('--env <env>', 'environment name')
+  .option('--file <path>', 'path to .env file (default: .env.<env>)')
+  .action(async (opts) => {
+    const { cmdImport } = await import('../src/commands/import.js')
+    await handle(() => cmdImport(opts))
+  })
+
+program
   .command('add <KEY=VALUE>')
   .description('add a new env var')
   .requiredOption('--env <env>', 'environment name')

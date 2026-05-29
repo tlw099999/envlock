@@ -44,7 +44,7 @@
     "tweetnacl-util": "^0.15.1"
   },
   "scripts": {
-    "test": "node --test test/crypto/encrypt.test.js test/crypto/keygen.test.js test/config/lockfile.test.js test/integration/workflow.test.js"
+    "test": "node --test test/**/*.test.js"
   },
   "devDependencies": {}
 }
