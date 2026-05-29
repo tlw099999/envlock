@@ -1,6 +1,6 @@
 {
   "name": "envlock-git",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Secure encrypted env var sharing for teams using asymmetric encryption",
   "keywords": [
     "env",
