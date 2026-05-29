@@ -193,6 +193,17 @@ program
     await handle(() => cmdInstallCi(opts))
   })
 
+program
+  .command('init-ci')
+  .description('create a dedicated CI identity and display its secrets securely')
+  .option('--force', 'regenerate even if CI identity already exists')
+  .option('--no-open', 'skip browser, use terminal fallback')
+  .option('-p, --port <port>', 'port for the setup browser page', '7778')
+  .action(async (opts) => {
+    const { cmdInitCi } = await import('../src/commands/initCi.js')
+    await handle(() => cmdInitCi(opts))
+  })
+
 // ─── key rotation ─────────────────────────────────────────────────────
 
 program

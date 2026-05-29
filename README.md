@@ -224,6 +224,7 @@ envlock run --env dev -- pytest tests/
 |---|---|
 | `envlock install-hooks` | Install git hooks locally |
 | `envlock install-ci` | Add GitHub Actions CI workflow to this repo |
+| `envlock init-ci` | Create a dedicated CI identity and display its secrets securely |
 
 ### Dashboard
 
@@ -335,7 +336,47 @@ Run `envlock verify` on every push and PR to catch drift before it hits producti
 
 No secrets needed — `envlock verify` only checks structure and coverage, not values.
 
-### GitHub Actions
+### Giving CI access to your secrets
+
+CI pipelines need to decrypt secrets too. `envlock init-ci` creates a dedicated CI identity, syncs all the vars it needs, then shows you exactly three secrets to add to your provider — the private key, the public key, and the fingerprint.
+
+```bash
+envlock init-ci
+# → prompts: which environments should CI have access to?
+# → generates a dedicated CI keypair
+# → syncs all vars for those environments
+# → opens a local browser page with the three secrets to copy
+#   (terminal fallback for SSH/headless environments)
+
+# commit the new CI identity
+git add .envlock/
+git commit -m "ci: add CI identity"
+```
+
+The browser page shuts down the moment you click **Done** — the private key is never written to disk, never appears in your terminal, and is not stored anywhere by envlock.
+
+**On headless / SSH machines:** the secrets are printed to the terminal and the screen is cleared after you press Enter, with a reminder to run `history -c`.
+
+Once you've copied the three values into your CI provider, add this step to your workflow:
+
+```yaml
+- name: Set up envlock CI identity
+  env:
+    ENVLOCK_CI_KEY: ${{ secrets.ENVLOCK_CI_KEY }}
+    ENVLOCK_CI_PUB: ${{ secrets.ENVLOCK_CI_PUB }}
+    ENVLOCK_CI_FP:  ${{ secrets.ENVLOCK_CI_FINGERPRINT }}
+  run: |
+    mkdir -p ~/.envlock
+    echo "$ENVLOCK_CI_KEY" | base64 -d > ~/.envlock/$ENVLOCK_CI_FP.key
+    echo "$ENVLOCK_CI_PUB" | base64 -d > ~/.envlock/$ENVLOCK_CI_FP.pub
+    echo '{"name":"ci","fingerprint":"'"$ENVLOCK_CI_FP"'","publicKey":"'"$ENVLOCK_CI_PUB"'"}' \
+      > ~/.envlock/identity.json
+
+- name: Decrypt secrets
+  run: envlock decrypt --env prod
+```
+
+### GitHub Actions (verify workflow)
 
 ```bash
 envlock install-ci
