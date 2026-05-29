@@ -1,6 +1,8 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/tlw099999/envlock/main/assets/wordmark-white.svg" alt="envlock" height="72" #gh-dark-mode-only />
-  <img src="https://raw.githubusercontent.com/tlw099999/envlock/main/assets/wordmark.svg" alt="envlock" height="72" #gh-light-mode-only />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/tlw099999/envlock/main/assets/wordmark-white.svg">
+    <img src="https://raw.githubusercontent.com/tlw099999/envlock/main/assets/wordmark.svg" alt="envlock" height="72" />
+  </picture>
   <br/><br/>
   <strong>Encrypted env vars that live in your repo. No servers. No shared secrets. Just git.</strong>
   <br/><br/>
